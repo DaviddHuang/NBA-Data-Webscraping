@@ -27,6 +27,12 @@ for team_url in teams:
 
 stat_df = pd.concat(all_teams)
 stat_df = stat_df.drop(columns=['Rk'])
+cols = list(stat_df.columns)
+if 'Pos' in cols:
+    cols.remove('Pos')
+    cols.insert(1, 'Pos')
+
+stat_df = stat_df[cols]
 stat_df.to_csv("nbaStats.csv", index=False)
 
 
