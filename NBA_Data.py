@@ -1,7 +1,6 @@
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup
-import csv
 import time;
 
 url = 'https://www.basketball-reference.com/leagues/NBA_2024_standings.html'
@@ -26,7 +25,7 @@ for team_url in teams:
 
 stat_df = pd.concat(all_teams)
 stat_df = stat_df.drop(columns=['Rk'])
-stat_df.to_csv("nbaStats.csv")
+stat_df.to_csv("nbaStats.csv", index=False)
 
 
 
