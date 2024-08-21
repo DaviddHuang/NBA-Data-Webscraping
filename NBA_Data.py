@@ -20,14 +20,14 @@ for team_url in teams:
     team_data = requests.get(team_url)
     per_game = pd.read_html(team_data.text, match="Per Game")[0]
     per_game["Team"] = team_name
-    all_teams.append(per_game)
+    country = pd.read_html(team_data.text, match="Roster")[0]
+    allStats = per_game.merge(country[["Player","Pos", "College"]], on="Player")
+    all_teams.append(allStats)
     time.sleep(5)
 
 stat_df = pd.concat(all_teams)
 stat_df = stat_df.drop(columns=['Rk'])
 stat_df.to_csv("nbaStats.csv", index=False)
-
-
 
 
 
