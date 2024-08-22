@@ -21,7 +21,8 @@ for team_url in teams:
     per_game = pd.read_html(team_data.text, match="Per Game")[0]
     per_game["Team"] = team_name
     country = pd.read_html(team_data.text, match="Roster")[0]
-    allStats = per_game.merge(country[["Player","Pos", "College"]], on="Player")
+    allStats = per_game.merge(country[["Player","Pos", "Birth", "College"]], on="Player")
+    allStats['Birth'] = allStats['Birth'].str.split().str[-1]
     all_teams.append(allStats)
     time.sleep(5)
 
@@ -33,7 +34,7 @@ if 'Pos' in cols:
     cols.insert(1, 'Pos')
 
 stat_df = stat_df[cols]
-stat_df.to_csv("nbaStats.csv", index=False)
+stat_df.to_csv("nbaStats.csv", index=False, encoding='utf-8')
 
 
 
