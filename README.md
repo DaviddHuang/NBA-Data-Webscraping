@@ -1,6 +1,6 @@
-# NBA Data Webscraping Project
+# NBA Data Web scraping Project
 
-This project involves webscraping NBA data off of [Basketball-Reference](https://www.basketball-reference.com/) using Beautiful Soup, followed by merging and cleaning the data with Pandas.
+This project involves web scraping NBA data off of [Basketball-Reference](https://www.basketball-reference.com/)
 
 ## Tools & Libraries Used
 
